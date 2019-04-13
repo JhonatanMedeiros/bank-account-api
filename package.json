@@ -10,8 +10,9 @@
     "restfull",
     "api"
   ],
-  "description": "",
+  "description": "Bank Account API - Node.js Express API with TypeScript 3",
   "author": "Jhonatan Medeiros <contato@jhonatanmedeiros.com>",
+  "repository": "https://github.com/JhonatanMedeiros/bank-account-api",
   "license": "MIT",
   "scripts": {
     "start": "npm run build && node ./dist/index.js",
