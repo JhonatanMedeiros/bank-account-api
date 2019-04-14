@@ -7,6 +7,7 @@ interface IConnectOptions {
     reconnectInterval: number;
     loggerLevel ? : string;
     useNewUrlParser ? : boolean;
+    useCreateIndex ?: boolean;
 }
 
 const connectOptions: IConnectOptions = {
@@ -14,6 +15,7 @@ const connectOptions: IConnectOptions = {
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000,
     useNewUrlParser: true,
+    useCreateIndex: true
 };
 
 const MONGO_URI: string = `${config.database.MONGODB_URI}${config.database.MONGODB_DB_MAIN}`;
