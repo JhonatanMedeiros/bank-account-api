@@ -1,3 +1,6 @@
+// @ts-ignore
+import * as mongoMorgan from 'mongoose-morgan';
+import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as cookieParser from 'cookie-parser';
@@ -6,8 +9,9 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as passport from 'passport';
 import * as session from 'express-session';
-import config from '../env/index';
 import * as mongo from 'connect-mongo';
+import * as fs from 'fs';
+import config from '../env/index';
 import { HttpError } from '../error';
 import { sendHttpErrorModule } from '../error/sendHttpError';
 const MongoStore: mongo.MongoStoreFactory = mongo(session);
@@ -30,6 +34,19 @@ export function configure(app: express.Application): void {
     app.use(helmet());
     // providing a Connect/Express middleware that can be used to enable CORS with various options
     app.use(cors());
+
+    // setup the logger
+    if (config.log.enable) {
+        if (app.get('env') === 'production') {
+            app.use(mongoMorgan(
+                { connectionString: `${config.log.MONGODB_URI}${config.log.MONGODB_DB_MAIN}` },
+                { }, 'combined'
+            ));
+        } else {
+            app.use(morgan('dev'));
+            app.use(morgan('combined', { stream: fs.createWriteStream('./access.log', { flags: 'a' }) }));
+        }
+    }
 
     /**
      * @swagger

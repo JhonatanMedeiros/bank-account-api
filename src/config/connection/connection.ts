@@ -33,25 +33,25 @@ db.on('error', (error) => {
 });
 
 db.on('connected', () => {
-    console.log('\x1b[32m', 'MongoDB :: connected');
+    console.log('\x1b[32m', 'MongoDB :: connected', '\x1b[0m');
 });
 
 db.once('open', () => {
-    console.log('\x1b[32m', 'MongoDB :: connection opened');
+    console.log('\x1b[32m', 'MongoDB :: connection opened', '\x1b[0m');
 });
 
 db.on('reconnected', () => {
-    console.log('\x1b[33m"', 'MongoDB :: reconnected');
+    console.log('\x1b[33m"', 'MongoDB :: reconnected', '\x1b[0m');
 });
 
 db.on('reconnectFailed', () => {
-    console.log('\x1b[31m', 'MongoDB :: reconnectFailed');
+    console.log('\x1b[31m', 'MongoDB :: reconnectFailed', '\x1b[0m');
 });
 
 db.on('disconnected', () => {
-    console.log('\x1b[31m', 'MongoDB :: disconnected');
+    console.log('\x1b[31m', 'MongoDB :: disconnected', '\x1b[0m');
 });
 
 db.on('fullsetup', () => {
-    console.log('\x1b[33m"', 'MongoDB :: reconnecting... %d');
+    console.log('\x1b[33m"', 'MongoDB :: reconnecting... %d', '\x1b[0m');
 });

@@ -23,6 +23,11 @@ try {
 export function init(app: express.Application): void {
     const router: express.Router = express.Router();
 
+    app.get('/ping', (req, res) => res.json({
+        msg: 'pong!',
+        version: process.env.npm_package_version
+    }));
+
     /**
      * @description
      *  Forwards any requests to the /v1/users URI to our UserRouter
@@ -54,7 +59,7 @@ export function init(app: express.Application): void {
         });
     }
 
-    /** 
+    /**
      * @description No results returned mean the object is not found
      * @constructs
      */
