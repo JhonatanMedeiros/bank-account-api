@@ -6,7 +6,7 @@ import { NextFunction, Request } from 'express';
  * @param {Request} req
  * @param {*} res
  * @param {NextFunction} next
- * 
+ *
  * @swagger
  * components:
  *  schemas:
@@ -54,7 +54,7 @@ export function sendHttpErrorModule(req: Request, res: any, next: NextFunction):
 }
 
 /**
- * 
+ *
  * @param error Error
  * @returns {string} HTML response or empty string
  * @description generates HTML for response

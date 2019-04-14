@@ -20,7 +20,8 @@
     "clean": "rimraf dist/*",
     "start:dev": "nodemon",
     "ts:watch": "tsc -w",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json"
   },
   "files": [
     "src"

@@ -2,7 +2,7 @@ import * as http from 'http';
 import * as passport from 'passport';
 import * as passportLocal from 'passport-local';
 import { NextFunction, Request, Response } from 'express';
-import UserModel, { IUserModel } from '../../components/User/model';
+import UserModel, { IUserModel } from '../../controllers/User/model';
 import HttpError from '../error';
 
 type LocalStrategyType = typeof passportLocal.Strategy;

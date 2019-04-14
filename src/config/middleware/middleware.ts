@@ -8,7 +8,7 @@ import * as passport from 'passport';
 import * as session from 'express-session';
 import config from '../env/index';
 import * as mongo from 'connect-mongo';
-import { HttpError } from '../error/index';
+import { HttpError } from '../error';
 import { sendHttpErrorModule } from '../error/sendHttpError';
 const MongoStore: mongo.MongoStoreFactory = mongo(session);
 
