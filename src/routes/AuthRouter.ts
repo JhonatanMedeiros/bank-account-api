@@ -1,4 +1,4 @@
-import { AuthComponent } from '../controllers';
+import { AuthController } from '../controllers';
 import { Router } from 'express';
 
 /**
@@ -42,7 +42,7 @@ const router: Router = Router();
  *              logged: false
  *              message: Email already exists
  */
-router.post('/signup', AuthComponent.signup);
+router.post('/signup', AuthController.signup);
 
 /**
  * POST method route
@@ -81,7 +81,7 @@ router.post('/signup', AuthComponent.signup);
  *              logged: false
  *              message: Invalid credentials
  */
-router.post('/login', AuthComponent.login);
+router.post('/login', AuthController.login);
 /**
  * POST method route
  * @example http://localhost:3000
@@ -109,7 +109,7 @@ router.post('/login', AuthComponent.login);
  *              logged: false
  *              message: You are not authorized to app. Can't logout
  */
-router.post('/logout', AuthComponent.logout);
+router.post('/logout', AuthController.logout);
 
 
 /**

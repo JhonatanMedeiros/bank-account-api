@@ -11,17 +11,13 @@ import { NextFunction } from 'express';
  */
 export interface IUserModel extends Document {
     email: string;
+    name: string;
+    picture: string;
+
     password: string;
     passwordResetToken: string;
     passwordResetExpires: Date;
 
-    profile: {
-        name: string,
-        gender: string,
-        location: string,
-        website: string,
-        picture: string
-    };
     comparePassword: (password: string) => Promise < boolean > ;
     gravatar: (size: number) => string;
 }
@@ -41,6 +37,8 @@ export interface IUserModel extends Document {
  *          type: string
  *        email:
  *          type: string
+ *        picture:
+ *          type: string
  *        password:
  *          type: string
  *        passwordResetToken:
@@ -59,6 +57,11 @@ const UserSchema: Schema = new Schema({
         unique: true,
         trim: true
     },
+    name: {
+        type: String,
+        required: true
+    },
+    picture: String,
     password: String,
     passwordResetToken: String,
     passwordResetExpires: Date

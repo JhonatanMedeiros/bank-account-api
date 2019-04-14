@@ -23,13 +23,15 @@ const AuthService: IAuthService = {
             }
 
             const user: IUserModel = new UserModel({
+                name: body.name,
                 email: body.email,
-                password: body.password
+                password: body.password,
+                picture: body.picture
             });
 
-            const query: IUserModel = await UserModel.findOne({
-                email: body.email
-            });
+            user.picture = user.picture ? user.picture : user.gravatar(100);
+
+            const query: IUserModel = await UserModel.findOne({ email: body.email });
 
             if (query) {
                 throw new Error('This email already exists');

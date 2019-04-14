@@ -1,7 +1,9 @@
-import * as AuthComponent from './Auth';
-import * as UserComponent from './User';
+import * as AuthController from './Auth';
+import * as UserController from './User';
+import * as CompanyController from './Company';
 
 export {
-    AuthComponent,
-    UserComponent
+    AuthController,
+    UserController,
+    CompanyController
 };

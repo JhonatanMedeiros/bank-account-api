@@ -143,6 +143,176 @@
         }
       }
     },
+    "/v1/companies": {
+      "get": {
+        "description": "Get all stored companies in Database",
+        "tags": [
+          "companies"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of companies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Companies"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create new Company",
+        "tags": [
+          "companies"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "requestBody": {
+          "description": "company creation request body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanySchema"
+              },
+              "example": {
+                "social_reason": "text here",
+                "fantasy_name": "text here",
+                "cnpj": "00.000.000/0000-00"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "return created company",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CompanySchema"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/companies/{id}": {
+      "get": {
+        "description": "Get company by companyId",
+        "tags": [
+          "companies"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the unique companyId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return company by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CompanySchema"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete company by companyId",
+        "tags": [
+          "companies"
+        ],
+        "security": [
+          {
+            "cookieAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the unique companyId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return deleted company",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CompanySchema"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/users": {
       "get": {
         "description": "Get all stored users in Database",
@@ -334,6 +504,56 @@
           }
         }
       },
+      "CompanySchema": {
+        "required": [
+          "state_registration",
+          "social_reason",
+          "fantasy_name",
+          "cnpj",
+          "responsible"
+        ],
+        "properties": {
+          "state_registration": {
+            "type": "string"
+          },
+          "social_reason": {
+            "type": "string"
+          },
+          "fantasy_name": {
+            "type": "string"
+          },
+          "cnpj": {
+            "type": "string"
+          },
+          "zip_code": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number"
+          },
+          "district": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "responsible": {
+            "type": "string"
+          }
+        }
+      },
+      "Companies": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/CompanySchema"
+        }
+      },
       "UserSchema": {
         "required": [
           "email",
@@ -347,6 +567,9 @@
             "type": "string"
           },
           "email": {
+            "type": "string"
+          },
+          "picture": {
             "type": "string"
           },
           "password": {
