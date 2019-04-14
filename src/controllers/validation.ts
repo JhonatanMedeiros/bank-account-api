@@ -14,8 +14,7 @@ abstract class Validation {
      * @type {string}
      * @memberof JoiSchema
      */
-    readonly messageObjectId: string =
-        'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters';
+    readonly messageObjectId: string = 'Argument passed in must be a single String of 12 bytes or a string of 24 hex characters';
 
     /**
      * Creates an instance of Schema.
@@ -24,22 +23,10 @@ abstract class Validation {
     constructor() {
         this.customJoi = Joi.extend({
             name: 'objectId',
-            language: {
-                base: this.messageObjectId
-            },
-            pre(
-                value: string,
-                state: Joi.State,
-                options: Joi.ValidationOptions
-            ): Object | string {
+            language: { base: this.messageObjectId },
+            pre(value: string, state: Joi.State, options: Joi.ValidationOptions): Object | string {
                 if (!Types.ObjectId.isValid(value)) {
-                    return this.createError(
-                        'objectId.base', {
-                            value
-                        },
-                        state,
-                        options
-                    );
+                    return this.createError('objectId.base', { value }, state, options);
                 }
 
                 return value; // Keep the value as it was

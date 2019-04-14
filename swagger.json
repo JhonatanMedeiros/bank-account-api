@@ -358,9 +358,6 @@
           "passwordResetExpires": {
             "type": "string",
             "format": "date"
-          },
-          "tokens": {
-            "type": "array"
           }
         }
       },

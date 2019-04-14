@@ -15,9 +15,6 @@ export interface IUserModel extends Document {
     passwordResetToken: string;
     passwordResetExpires: Date;
 
-    facebook: string;
-    tokens: AuthToken[];
-
     profile: {
         name: string,
         gender: string,
@@ -28,11 +25,6 @@ export interface IUserModel extends Document {
     comparePassword: (password: string) => Promise < boolean > ;
     gravatar: (size: number) => string;
 }
-
-export type AuthToken = {
-    accessToken: string,
-    kind: string
-};
 
 /**
  * @swagger
@@ -56,8 +48,6 @@ export type AuthToken = {
  *        passwordResetExpires:
  *          type: string
  *          format: date
- *        tokens:
- *          type: array
  *    Users:
  *      type: array
  *      items:
@@ -71,13 +61,12 @@ const UserSchema: Schema = new Schema({
     },
     password: String,
     passwordResetToken: String,
-    passwordResetExpires: Date,
-    tokens: Array,
+    passwordResetExpires: Date
 }, {
     collection: 'usermodel',
     versionKey: false
 }).pre('save', async function (next: NextFunction): Promise < void > {
-    const user: any = this; // tslint:disable-line
+    const user: any = this;
 
     if (!user.isModified('password')) {
         return next();
@@ -85,10 +74,7 @@ const UserSchema: Schema = new Schema({
 
     try {
         const salt: string = await bcrypt.genSalt(10);
-
-        const hash: string = await bcrypt.hash(user.password, salt);
-
-        user.password = hash;
+        user.password = await bcrypt.hash(user.password, salt);
         next();
     } catch (error) {
         return next(error);
@@ -100,9 +86,7 @@ const UserSchema: Schema = new Schema({
  */
 UserSchema.methods.comparePassword = async function (candidatePassword: string): Promise < boolean > {
     try {
-        const match: boolean = await bcrypt.compare(candidatePassword, this.password);
-
-        return match;
+        return await bcrypt.compare(candidatePassword, this.password);
     } catch (error) {
         return error;
     }
