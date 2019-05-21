@@ -5,7 +5,6 @@ process.env.PORT = '3003';
 
 import 'mocha';
 import * as chai from 'chai';
-import * as mongoose from 'mongoose';
 import chaiHttp = require('chai-http');
 
 import Server from '../src/index';
