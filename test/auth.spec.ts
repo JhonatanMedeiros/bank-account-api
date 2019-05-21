@@ -13,7 +13,6 @@ chai.use(chaiHttp);
 
 const user: any = { name: 'test', email: 'test@email.com', password: '123' };
 
-
 describe('Auth', () => {
 
   before((done) => {

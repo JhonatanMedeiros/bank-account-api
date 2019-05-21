@@ -11,7 +11,7 @@ import { NextFunction, Request, Response } from 'express';
  * @param {IUserModel} user
  * @param {string} resMessage
  */
-function passportRequestLogin(req: Request, res: Response, next: NextFunction, user: IUserModel ,resMessage: string): void {
+function passportRequestLogin(req: Request, res: Response, next: NextFunction, user: IUserModel, resMessage: string): void {
   return req.logIn(user, (err) => {
     if (err) return next(new HttpError(err));
 
