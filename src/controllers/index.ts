@@ -3,7 +3,7 @@ import * as UserController from './User';
 import * as CompanyController from './Company';
 
 export {
-    AuthController,
-    UserController,
-    CompanyController
+  AuthController,
+  UserController,
+  CompanyController
 };

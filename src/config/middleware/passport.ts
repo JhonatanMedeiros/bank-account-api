@@ -16,7 +16,7 @@ const LocalStrategy: LocalStrategyType = passportLocal.Strategy;
  * as req.session.passport.user = {}
  */
 passport.serializeUser((user: { id: number }, done: Function) => {
-    done(undefined, user.id);
+  done(undefined, user.id);
 });
 
 /**
@@ -25,13 +25,13 @@ passport.serializeUser((user: { id: number }, done: Function) => {
  * if everything ok, proceed to route
  */
 passport.deserializeUser(async (id: number, done: Function) => {
-    try {
-        const user: IUserModel = await UserModel.findById(id);
+  try {
+    const user: IUserModel = await UserModel.findById(id);
 
-        done(null, user);
-    } catch (error) {
-        done(error);
-    }
+    done(null, user);
+  } catch (error) {
+    done(error);
+  }
 });
 
 /**
@@ -40,41 +40,41 @@ passport.deserializeUser(async (id: number, done: Function) => {
  * and use it in passport
  */
 passport.use(new LocalStrategy({
-    usernameField: 'email'
+  usernameField: 'email'
 }, async (email: string, password: string, done: Function): Promise < void > => {
-    try {
-        const user: IUserModel = await UserModel.findOne({
-            email: email.toLowerCase()
-        });
+  try {
+    const user: IUserModel = await UserModel.findOne({
+      email: email.toLowerCase()
+    });
 
-        if (!user) {
-            return done(undefined, false, {
-                message: `Email ${email} not found.`
-            });
-        }
-
-        const isMatched: boolean = await user.comparePassword(password);
-
-        if (isMatched) {
-            return done(undefined, user);
-        }
-
-        return done(undefined, false, {
-            message: 'Invalid email or password.'
-        });
-
-    } catch (error) {
-        done(error);
+    if (!user) {
+      return done(undefined, false, {
+        message: `Email ${email} not found.`
+      });
     }
+
+    const isMatched: boolean = await user.comparePassword(password);
+
+    if (isMatched) {
+      return done(undefined, user);
+    }
+
+    return done(undefined, false, {
+      message: 'Invalid email or password.'
+    });
+
+  } catch (error) {
+    done(error);
+  }
 }));
 
 /**
  * @description Login Required middleware.
  */
 export function isAuthenticated(req: Request, res: Response, next: NextFunction): void {
-    if (req.isAuthenticated()) {
-        return next();
-    }
+  if (req.isAuthenticated()) {
+    return next();
+  }
 
-    next(new HttpError(401, http.STATUS_CODES[401]));
+  next(new HttpError(401, http.STATUS_CODES[401]));
 }

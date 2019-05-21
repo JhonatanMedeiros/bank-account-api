@@ -7,17 +7,17 @@ import { Document, Schema } from 'mongoose';
  * @extends {Document}
  */
 export interface ICompanyModel extends Document {
-    state_registration: string;
-    social_reason: string;
-    fantasy_name: string;
-    cnpj: string;
-    zip_code: string;
-    address: string;
-    number: number;
-    district: number;
-    city: string;
-    state: string;
-    responsible: string;
+  state_registration: string;
+  social_reason: string;
+  fantasy_name: string;
+  cnpj: string;
+  zip_code: string;
+  address: string;
+  number: number;
+  district: number;
+  city: string;
+  state: string;
+  responsible: string;
 }
 
 /**
@@ -60,38 +60,38 @@ export interface ICompanyModel extends Document {
  *        $ref: '#/components/schemas/CompanySchema'
  */
 const CompanySchema: Schema = new Schema({
-    state_registration: {
-        type: String,
-        unique: true,
-        trim: true,
-        required: true
-    },
-    social_reason: {
-        type: String,
-        unique: true,
-        trim: true,
-        required: true
-    },
-    fantasy_name: {
-        type: String,
-        required: true
-    },
-    cnpj: {
-        type: String,
-        unique: true,
-        trim: true,
-        required: true
-    },
-    zip_code: String,
-    address: String,
-    number: Number,
-    district: String,
-    city: String,
-    state: String,
-    responsible: { type: Schema.Types.ObjectId, ref: 'UserModel', required: true },
+  state_registration: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: true
+  },
+  social_reason: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: true
+  },
+  fantasy_name: {
+    type: String,
+    required: true
+  },
+  cnpj: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: true
+  },
+  zip_code: String,
+  address: String,
+  number: Number,
+  district: String,
+  city: String,
+  state: String,
+  responsible: { type: Schema.Types.ObjectId, ref: 'UserModel', required: true },
 }, {
-    collection: 'companymodel',
-    versionKey: false
+  collection: 'companymodel',
+  versionKey: false
 });
 
 export default connections.db.model < ICompanyModel > ('CompanyModel', CompanySchema);

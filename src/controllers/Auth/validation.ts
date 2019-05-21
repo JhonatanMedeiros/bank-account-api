@@ -9,28 +9,28 @@ import { IUserModel } from '../User/model';
  */
 class AuthValidation extends Validation {
 
-     /**
-     * Creates an instance of AuthValidation.
-     * @memberof AuthValidation
-     */
-    constructor() {
-        super();
-    }
-    /**
-     * @param {IUserModel} params
-     * @returns {Joi.ValidationResult<IUserModel >}
-     * @memberof UserValidation
-     */
-    createUser(params: IUserModel): Joi.ValidationResult < IUserModel > {
-        const schema: Joi.Schema = Joi.object().keys({
-            password: Joi.string().required(),
-            name: Joi.string().required(),
-            email: Joi.string().email({ minDomainAtoms: 2 }).required(),
-            picture: Joi.string()
-        });
+  /**
+   * Creates an instance of AuthValidation.
+   * @memberof AuthValidation
+   */
+  constructor() {
+    super();
+  }
+  /**
+   * @param {IUserModel} params
+   * @returns {Joi.ValidationResult<IUserModel >}
+   * @memberof UserValidation
+   */
+  createUser(params: IUserModel): Joi.ValidationResult < IUserModel > {
+    const schema: Joi.Schema = Joi.object().keys({
+      password: Joi.string().required(),
+      name: Joi.string().required(),
+      email: Joi.string().email({ minDomainAtoms: 2 }).required(),
+      picture: Joi.string()
+    });
 
-        return Joi.validate(params, schema);
-    }
+    return Joi.validate(params, schema);
+  }
 }
 
 export default new AuthValidation();
