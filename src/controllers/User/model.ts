@@ -12,14 +12,14 @@ import { NextFunction } from 'express';
 export interface IUserModel extends Document {
   email: string;
   name: string;
-  picture: string;
+  picture?: string;
 
   password: string;
-  passwordResetToken: string;
-  passwordResetExpires: Date;
+  passwordResetToken?: string;
+  passwordResetExpires?: Date;
 
-  comparePassword: (password: string) => Promise < boolean > ;
-  gravatar: (size: number) => string;
+  comparePassword?: (password: string) => Promise < boolean > ;
+  gravatar?: (size: number) => string;
 }
 
 /**
@@ -51,7 +51,7 @@ export interface IUserModel extends Document {
  *      items:
  *        $ref: '#/components/schemas/UserSchema'
  */
-const UserSchema: Schema = new Schema({
+export const UserSchema: Schema = new Schema({
   email: {
     type: String,
     unique: true,

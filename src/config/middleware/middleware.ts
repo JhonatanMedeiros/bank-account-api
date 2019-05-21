@@ -112,7 +112,5 @@ export function initErrorHandler(app: express.Application): void {
         res.sendHttpError(error, error.message);
       }
     }
-
-    console.error(error);
   });
 }

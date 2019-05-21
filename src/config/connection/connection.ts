@@ -41,7 +41,7 @@ db.once('open', () => {
 });
 
 db.on('reconnected', () => {
-  console.log('\x1b[33m"', 'MongoDB :: reconnected', '\x1b[0m');
+  console.log('\x1b[33m', 'MongoDB :: reconnected', '\x1b[0m');
 });
 
 db.on('reconnectFailed', () => {
@@ -53,5 +53,5 @@ db.on('disconnected', () => {
 });
 
 db.on('fullsetup', () => {
-  console.log('\x1b[33m"', 'MongoDB :: reconnecting... %d', '\x1b[0m');
+  console.log('\x1b[33m', 'MongoDB :: reconnecting... %d', '\x1b[0m');
 });

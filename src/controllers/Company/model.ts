@@ -59,7 +59,7 @@ export interface ICompanyModel extends Document {
  *      items:
  *        $ref: '#/components/schemas/CompanySchema'
  */
-const CompanySchema: Schema = new Schema({
+export const CompanySchema: Schema = new Schema({
   state_registration: {
     type: String,
     unique: true,

@@ -18,15 +18,29 @@ interface IConfig {
 
 const NODE_ENV: string = process.env.NODE_ENV || 'development';
 
+const test: IConfig = {
+  port: process.env.PORT || 3003,
+  database: {
+    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:17017/',
+    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db_test'
+  },
+  log: {
+    enable: !!(process.env.LOGS || true),
+    MONGODB_URI: process.env.LOGS_MONGODB_URI || 'mongodb://localhost:17017/',
+    MONGODB_DB_MAIN: process.env.LOGS_MONGODB_DB_MAIN || 'account_bank_log_db_test'
+  },
+  secret: process.env.SECRET || '@QEGTUI'
+};
+
 const development: IConfig = {
   port: process.env.PORT || 3000,
   database: {
-    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/',
+    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:17017/',
     MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db'
   },
   log: {
     enable: !!(process.env.LOGS || true),
-    MONGODB_URI: process.env.LOGS_MONGODB_URI || 'mongodb://localhost:27017/',
+    MONGODB_URI: process.env.LOGS_MONGODB_URI || 'mongodb://localhost:17017/',
     MONGODB_DB_MAIN: process.env.LOGS_MONGODB_DB_MAIN || 'account_bank_log_db'
   },
   secret: process.env.SECRET || '@QEGTUI'
@@ -46,6 +60,6 @@ const production: IConfig = {
   secret: process.env.SECRET || '@QEGTUI'
 };
 
-const config: { [name: string]: IConfig } = { development, production };
+const config: { [name: string]: IConfig } = { development, production, test };
 
 export default config[NODE_ENV];

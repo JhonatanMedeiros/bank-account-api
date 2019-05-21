@@ -15,6 +15,7 @@ function passportRequestLogin(req: Request, res: Response, next: NextFunction, u
   return req.logIn(user, (err) => {
     if (err) return next(new HttpError(err));
 
+    res.status(200);
     res.json({
       status: 200,
       logged: true,
@@ -39,6 +40,7 @@ export async function signup(req: Request, res: Response, next: NextFunction): P
     if (error.code === 500) {
       return next(new HttpError(error.message.status, error.message));
     }
+    res.status(400);
     res.json({
       status: 400,
       message: error.message
@@ -60,6 +62,8 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
     }
 
     if (!user) {
+      res.status(401);
+
       return res.json({
         status: 401,
         logged: false,
@@ -79,6 +83,7 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
 export async function logout(req: Request, res: Response, next: NextFunction): Promise < void > {
 
   if (!req.user) {
+    res.status(401);
     res.json({
       status: 401,
       logged: false,
@@ -88,6 +93,7 @@ export async function logout(req: Request, res: Response, next: NextFunction): P
 
   if (req.user) {
     req.logout();
+    res.status(200);
     res.json({
       status: 200,
       logged: false,
