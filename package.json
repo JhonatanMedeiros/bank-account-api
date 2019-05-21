@@ -22,7 +22,7 @@
     "ts:watch": "tsc -w",
     "tsc": "tsc",
     "lint": "./node_modules/.bin/tslint --project tslint.json",
-    "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.spec.ts",
+    "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.spec.ts --exit",
     "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json"
   },
   "files": [
