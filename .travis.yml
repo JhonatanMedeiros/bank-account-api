@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - "10"
+
+notifications:
+  slack: jhonatanmedeiros:Qao51y7bLNTtBgO6ytrC7tXb
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+env:
+  - CI=true
+
+script:
+  - npm run lint

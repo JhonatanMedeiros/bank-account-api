@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/JhonatanMedeiros/bank-account-api.svg?branch=master)](https://travis-ci.com/JhonatanMedeiros/bank-account-api)
+
 # Bank Account API
 
 
