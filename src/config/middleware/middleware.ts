@@ -14,6 +14,7 @@ import * as fs from 'fs';
 import config from '../env/index';
 import { HttpError } from '../error';
 import { sendHttpErrorModule } from '../error/sendHttpError';
+import { MONGO_URI } from '../connection/connection';
 const MongoStore: mongo.MongoStoreFactory = mongo(session);
 
 /**
@@ -63,7 +64,7 @@ export function configure(app: express.Application): void {
     secret: config.secret,
     name: 'api.sid',
     store: new MongoStore({
-      url: `${config.database.MONGODB_URI}${config.database.MONGODB_DB_MAIN}`,
+      url: MONGO_URI,
       autoReconnect: true
     })
   }));

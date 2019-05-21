@@ -18,7 +18,12 @@ const connectOptions: IConnectOptions = {
   useCreateIndex: true
 };
 
-const MONGO_URI: string = `${config.database.MONGODB_URI}${config.database.MONGODB_DB_MAIN}`;
+export let MONGO_URI: string = `mongodb://${config.database.MONGODB_DOMAIN}/${config.database.MONGODB_DB_MAIN}`;
+
+if (config.database.MONGODB_DB_USER && config.database.MONGODB_DB_PASS) {
+  // tslint:disable-next-line:max-line-length
+  MONGO_URI = `mongodb://${config.database.MONGODB_DB_USER}:${config.database.MONGODB_DB_PASS}@${config.database.MONGODB_DOMAIN}/${config.database.MONGODB_DB_MAIN}`;
+}
 
 export const db: mongoose.Connection = mongoose.createConnection(MONGO_URI, connectOptions);
 

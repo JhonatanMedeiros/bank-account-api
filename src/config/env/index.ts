@@ -1,12 +1,14 @@
-import * as dotenv from 'dotenv';
+import { config as dotConfig } from 'dotenv';
 
-dotenv.config();
+dotConfig();
 
 interface IConfig {
   port: string | number;
   database: {
-    MONGODB_URI: string;
+    MONGODB_DOMAIN: string;
     MONGODB_DB_MAIN: string;
+    MONGODB_DB_USER: string;
+    MONGODB_DB_PASS: string;
   };
   log: {
     enable: boolean;
@@ -21,8 +23,10 @@ const NODE_ENV: string = process.env.NODE_ENV || 'development';
 const test: IConfig = {
   port: process.env.PORT || 3003,
   database: {
-    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:17017/',
-    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db_test'
+    MONGODB_DOMAIN: process.env.MONGODB_DOMAIN || 'localhost:17017',
+    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db_test',
+    MONGODB_DB_USER: process.env.MONGODB_DB_USER || 'user',
+    MONGODB_DB_PASS: process.env.MONGODB_DB_PASS || '123'
   },
   log: {
     enable: !!(process.env.LOGS || true),
@@ -35,8 +39,10 @@ const test: IConfig = {
 const development: IConfig = {
   port: process.env.PORT || 3000,
   database: {
-    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:17017/',
-    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db'
+    MONGODB_DOMAIN: process.env.MONGODB_DOMAIN || 'localhost:17017',
+    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db',
+    MONGODB_DB_USER: process.env.MONGODB_DB_USER || 'user',
+    MONGODB_DB_PASS: process.env.MONGODB_DB_PASS || '123'
   },
   log: {
     enable: !!(process.env.LOGS || true),
@@ -49,8 +55,10 @@ const development: IConfig = {
 const production: IConfig = {
   port: process.env.PORT || 3000,
   database: {
-    MONGODB_URI: process.env.MONGODB_URI || 'mongodb://production_uri/',
-    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db'
+    MONGODB_DOMAIN: process.env.MONGODB_DOMAIN || 'production_uri',
+    MONGODB_DB_MAIN: process.env.MONGODB_DB_MAIN || 'account_bank_db',
+    MONGODB_DB_USER: process.env.MONGODB_DB_USER || 'user',
+    MONGODB_DB_PASS: process.env.MONGODB_DB_PASS || '123'
   },
   log: {
     enable: !!(process.env.LOGS || true),
