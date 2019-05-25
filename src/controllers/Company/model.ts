@@ -94,4 +94,4 @@ export const CompanySchema: Schema = new Schema({
   versionKey: false
 });
 
-export default connections.db.model < ICompanyModel > ('CompanyModel', CompanySchema);
+export default connections.db.model<ICompanyModel>('CompanyModel', CompanySchema);

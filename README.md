@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/JhonatanMedeiros/bank-account-api.svg?branch=master)](https://travis-ci.com/JhonatanMedeiros/bank-account-api)
+[![Greenkeeper badge](https://badges.greenkeeper.io/JhonatanMedeiros/bank-account-api.svg)](https://greenkeeper.io/)
 
 # Bank Account API
 

@@ -65,9 +65,8 @@ const generateHTML: Function = (error: HttpError): string => {
       `<p>Status: ${error.status}</p>` +
       `<p>Name: ${error.name}</p>` +
       `<p>${error}</p>` +
-      `</div>`;
+      '</div>';
   }
 
   return '';
 };
-
