@@ -1,7 +1,7 @@
 {
   "name": "bank-account-api",
   "version": "1.0.0",
-  "main": "./build/index.js",
+  "main": "./dist/index.js",
   "keywords": [
     "typescript",
     "node",
@@ -16,14 +16,13 @@
   "license": "MIT",
   "scripts": {
     "start": "$npm_execpath run build && node ./dist/index.js",
-    "build": "$npm_execpath run clean && npm run tsc",
-    "clean": "rimraf dist/*",
     "start:dev": "nodemon",
-    "ts:watch": "tsc -w",
-    "tsc": "tsc",
+    "build": "$npm_execpath run clean && npm run webpack",
+    "clean": "rimraf dist",
     "lint": "./node_modules/.bin/tslint --project tslint.json",
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.spec.ts --exit",
-    "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json"
+    "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json",
+    "webpack": "cross-env NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js"
   },
   "files": [
     "src"
@@ -74,18 +73,22 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cross-env": "^5.2.0",
-    "jsdoc": "^3.5.5",
+    "jsdoc": "^3.6.2",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "rimraf": "^2.6.3",
     "source-map-loader": "0.2.4",
-    "swagger-jsdoc": "^3.2.7",
+    "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2",
+    "ts-loader": "^6.0.1",
     "ts-node": "^6.2.0",
     "tslint": "5.8.0",
     "tslint-config-airbnb": "5.8.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typescript": "^3.4.3"
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }
