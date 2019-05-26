@@ -18,8 +18,8 @@
     "url": "https://jhonatanmedeiros.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/JhonatanMedeiros/bank-account-api"
+    "type": "git",
+    "url": "https://github.com/JhonatanMedeiros/bank-account-api"
   },
   "license": "MIT",
   "scripts": {
