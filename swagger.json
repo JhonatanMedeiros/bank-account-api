@@ -1,13 +1,23 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Bank Account API",
+    "title": "Bank Account API - DOCS",
     "version": "1.0.0",
-    "description": "A sample API"
+    "description": "Bank Account API - Node.js Express API with TypeScript 3",
+    "contact": {
+      "email": "contato@jhonatanmedeiros.com"
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Bank Account API",
+    "url": "https://github.com/JhonatanMedeiros/bank-account-api#readme"
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3001"
+    },
+    {
+      "url": "https://node-bank-account-api.herokuapp.com/"
     }
   ],
   "paths": {
