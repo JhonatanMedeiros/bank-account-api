@@ -14,6 +14,10 @@ describe('Auth', () => {
     });
   });
 
+  afterAll((done) => {
+    Server.close(done());
+  });
+
   describe('/POST Signup', () => {
 
     it('it should create user with success', async () => {
