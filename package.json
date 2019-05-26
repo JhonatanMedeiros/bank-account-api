@@ -21,8 +21,8 @@
     "clean": "rimraf dist",
     "lint": "./node_modules/.bin/tslint --project tslint.json",
     "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json",
-    "webpack": "cross-env NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js",
-    "test": "cross-env NODE_ENV=test cross-env PORT=3003 jest --ci --detectOpenHandles --forceExit --maxWorkers=2"
+    "webpack": "NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js",
+    "test": "NODE_ENV=test cross-env PORT=3003 jest --ci --detectOpenHandles --forceExit --maxWorkers=2"
   },
   "files": [
     "src"
