@@ -22,8 +22,7 @@
     "lint": "./node_modules/.bin/tslint --project tslint.json",
     "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json",
     "webpack": "cross-env NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js",
-    "test": "cross-env NODE_ENV=test cross-env PORT=3003 jest",
-    "coverage": "cross-env NODE_ENV=test cross-env jest --coverage"
+    "test": "cross-env NODE_ENV=test cross-env PORT=3003 jest --ci --detectOpenHandles --forceExit --maxWorkers=2"
   },
   "files": [
     "src"
@@ -48,6 +47,7 @@
     "util": "^0.12.0"
   },
   "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.3.4",
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "1.17.0",
     "@types/compression": "0.0.36",
