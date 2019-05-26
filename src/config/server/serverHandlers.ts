@@ -15,12 +15,12 @@ export function onError(error: NodeJS.ErrnoException, port: number | string | bo
   switch (error.code) {
     case 'EACCES':
       console.log('\x1b[31m', `API :: ${bind} requires elevated privileges`, '\x1b[0m');
-      process.exit(1);
+      process.env.NODE_ENV !== 'test' ? process.exit(1) : null;
 
       break;
     case 'EADDRINUSE':
       console.log('\x1b[31m', `API :: ${bind} is already in use`, '\x1b[0m');
-      process.exit(1);
+      process.env.NODE_ENV !== 'test' ? process.exit(1) : null;
 
       break;
     default:
@@ -36,4 +36,8 @@ export function onListening(): void {
   const bind: string = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
 
   console.log('\x1b[32m', `API :: Listening on ${bind}`, '\x1b[0m');
+}
+
+export function onClose(): void {
+  console.log('\x1b[32m', 'API :: On Close', '\x1b[0m');
 }
