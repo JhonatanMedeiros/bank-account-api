@@ -24,6 +24,10 @@ describe('Company', () => {
       });
   });
 
+  afterAll((done) => {
+    Server.close(done());
+  });
+
   describe('/GET company', () => {
     it('it should GET all the companies', async () => {
       await serve
