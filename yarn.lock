@@ -304,6 +304,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@olavoparno/jest-badges-readme@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@olavoparno/jest-badges-readme/-/jest-badges-readme-1.3.4.tgz#f0eea3da67c16aa57b6397029ed8b883759ea4e4"
+  integrity sha512-TaaFkCCPTtE93zN+ipVpoc912Febx18GvU4aqSGunnsDLedRJvQHh63DQz4Lxt/N/RRrHSzUEqCFF/vCgn9KWg==
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
