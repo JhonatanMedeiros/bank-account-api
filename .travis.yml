@@ -17,3 +17,12 @@ env:
 script:
   - npm run lint
   - npm run test
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_API
+  app: node-bank-account-api
+  on:
+    branch: master
+    repo: JhonatanMedeiros/bank-account-api
