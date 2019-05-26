@@ -1,6 +1,7 @@
 {
   "name": "bank-account-api",
   "version": "1.0.0",
+  "homepage": "https://github.com/JhonatanMedeiros/bank-account-api#readme",
   "main": "./dist/index.js",
   "keywords": [
     "typescript",
@@ -11,8 +12,15 @@
     "api"
   ],
   "description": "Bank Account API - Node.js Express API with TypeScript 3",
-  "author": "Jhonatan Medeiros <contato@jhonatanmedeiros.com>",
-  "repository": "https://github.com/JhonatanMedeiros/bank-account-api",
+  "author": {
+    "email": "contato@jhonatanmedeiros.com",
+    "name": "Jhonatan Medeiros",
+    "url": "https://jhonatanmedeiros.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/JhonatanMedeiros/bank-account-api"
+  },
   "license": "MIT",
   "scripts": {
     "start": "$npm_execpath run build && node ./dist/index.js",
@@ -21,8 +29,8 @@
     "clean": "rimraf dist",
     "lint": "./node_modules/.bin/tslint --project tslint.json",
     "docs": "swagger-jsdoc -d swaggerDef.js -o swagger.json",
-    "webpack": "cross-env NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js",
-    "test": "cross-env NODE_ENV=test cross-env PORT=3003 jest --ci --detectOpenHandles --forceExit --maxWorkers=2"
+    "webpack": "NODE_ENV=production webpack --inline --hot --progress --config webpack.config.js",
+    "test": "NODE_ENV=test cross-env PORT=3003 jest --ci --detectOpenHandles --forceExit --maxWorkers=2"
   },
   "files": [
     "src"
