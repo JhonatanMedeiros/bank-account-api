@@ -72,7 +72,7 @@
     "@types/joi": "^14.0.1",
     "@types/mongoose": "^5.3.26",
     "@types/morgan": "^1.7.35",
-    "@types/node": "12.0.2",
+    "@types/node": "12.0.3",
     "@types/passport": "^1.0.0",
     "@types/passport-local": "^1.0.33",
     "@types/superagent": "^4.1.1",
