@@ -59,7 +59,7 @@
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "1.17.0",
     "@types/compression": "0.0.36",
-    "@types/connect-mongo": "0.0.42",
+    "@types/connect-mongo": "0.0.43",
     "@types/cookie-parser": "1.4.1",
     "@types/cors": "2.8.5",
     "@types/debug": "4.1.4",
