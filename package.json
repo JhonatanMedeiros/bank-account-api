@@ -58,7 +58,7 @@
     "@olavoparno/jest-badges-readme": "^1.3.4",
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "1.17.0",
-    "@types/compression": "0.0.36",
+    "@types/compression": "1.0.0",
     "@types/connect-mongo": "0.0.42",
     "@types/cookie-parser": "1.4.1",
     "@types/cors": "2.8.5",
