@@ -61,7 +61,7 @@
     "@types/compression": "0.0.36",
     "@types/connect-mongo": "0.0.42",
     "@types/cookie-parser": "1.4.1",
-    "@types/cors": "2.8.5",
+    "@types/cors": "2.8.6",
     "@types/debug": "4.1.4",
     "@types/dotenv": "^6.1.0",
     "@types/ejs": "2.6.3",
