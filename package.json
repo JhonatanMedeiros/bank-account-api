@@ -48,7 +48,7 @@
     "express-session": "^1.15.6",
     "helmet": "3.18.0",
     "joi": "^14.3.0",
-    "mongoose": "^5.5.1",
+    "mongoose": "^5.13.20",
     "mongoose-morgan": "^1.0.8",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
